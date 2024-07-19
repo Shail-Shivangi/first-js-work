@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            
+            background-image:linear-gradient(
+                to right top,
+                #051937,
+                #004d7a,
+                #008793,
+                #00bf72,
+                #a8eb12
+            ) ;
+            display: block;
+            /* justify-content: center; */
+            /* align-self: center; */
+            background-repeat: no-repeat;
+            /* background-size: cover; */
+        }
+        #btn1{
+            height:50px;
+            width: 150px;
+            border-radius:9px;
+            border: 3px,solid,brown;
+            font-size: x-large;
+            /* background-color: #051937; */
+            opacity: 0.5;
+            /* text-decoration: #004d7a; */
+        }
+        #btn2{
+            height:50px;
+            width: 150px;
+            border-radius:9px;
+            border: 3px,solid,brown;
+            font-size: x-large;
+            opacity: 0.5;
+            
+        }
+        h1{
+            height: 220px;
+            align-content: center;
+            margin-left: 600px;
+            word-spacing: 30px;
+            font-size: xx-large;
+            text-decoration:solid;
+        }
+        #btn{
+            margin-left: 600px;
+        }
+        h2{
+            margin-left: 600px; 
+            margin-top: 80px; 
+            word-spacing: 30px;
+        }
+        .codecopy{
+            height: 130px;
+            margin-left: 500px; 
+            margin-top: 50px;
+            font-size: x-large;
+            word-spacing: 10px;
+        }
+        #quot{
+            margin-left: 600px; 
+            margin-top: 30px; 
+            word-spacing: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Play With Colors</h1>
+    <div id="btn">
+    <button id="btn1">#051937</button>
+
+    <button id="btn2">#008793</button>
+</div>
+    <h2>Copy Color Code</h2>
+    <div class="codecopy">Background-color : linear gradient ( left to right, rgb(92,145), rgb(152,63,198) )</div>
+    <div id="quot"></div>
+</body>
+<script>
+   let newele= document.createElement("h3");
+let newtext=document.createTextNode("let's fun with colors");
+// console.log(newele);
+newele.appendChild(newtext);
+document.getElementById("quot").appendChild(newele);
+console.log(newele);
+
+    let btn1ele=document.getElementById("btn1");
+    let btn2ele=document.getElementById("btn2");
+    let copied=document.querySelector(".codecopy");
+    let rgb1="#051937";
+    let rgb2="#008793";
+    const createHexVal=()=>{
+        const hexdigits="0123456789abcdef";
+        let fvalue="#";
+        for(let j=0;j<6;j++){
+            fvalue=fvalue+hexdigits[Math.trunc(Math.random()*16)];
+        }
+      return (fvalue);  
+    }
+    const eventBtn1=()=>{
+         rgb1=createHexVal();
+        document.body.style.backgroundImage=`linear-gradient(to right, ${rgb1}, ${rgb2})`;
+        copied.innerHTML=`Background-color : linear gradient (left to right, ${rgb1}, ${rgb2})`;
+        btn1ele.innerHTML=`${rgb1}`;  
+    };
+    const eventBtn2=()=>{
+         rgb2=createHexVal();
+        document.body.style.backgroundImage=`linear-gradient(to right, ${rgb1}, ${rgb2})`;
+        copied.innerHTML=`Background-color : linear gradient (left to right, ${rgb1}, ${rgb2})`;
+        btn2ele.innerHTML=`${rgb2}`; 
+          
+    };
+    btn1ele.addEventListener("click",eventBtn1);
+    btn2ele.addEventListener("click",eventBtn2);
+    copied.addEventListener("click",()=>{
+       navigator.clipboard.writeText(copied.innerHTML); 
+    });
+    
+</script>
+</html>
